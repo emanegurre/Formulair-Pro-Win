@@ -29,12 +29,13 @@ def export_materials_csv(path: Path):
 
 def export_formulas_csv(path: Path):
     headers = ["id", "name", "category", "total_weight_g", "cost_estimate"]
-    rows: List[Formula] = services.list_all(Formula)
+    rows: List[Formula] = services.list_formulas()
     with path.open("w", newline="", encoding="utf-8") as f:
         wr = csv.writer(f)
         wr.writerow(headers)
         for fo in rows:
-            wr.writerow([fo.id, fo.name, fo.category, fo.total_weight(), fo.cost_estimate()])
+            rev = fo.latest()
+            wr.writerow([fo.id, fo.name, fo.category, rev.total_weight(), rev.cost_estimate()])
 
 
 # ---------------------------------------------------------------------------#
