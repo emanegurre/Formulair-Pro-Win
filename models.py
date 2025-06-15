@@ -28,6 +28,7 @@ from sqlalchemy.orm import (
     sessionmaker,
     validates,
 )
+from sqlalchemy.engine import Engine
 
 # ---------------------------------------------------------------------------#
 # Base
@@ -194,6 +195,11 @@ class FormulaEntry(Base):
 _DB_PATH = Path(__file__).with_name("formulair.db")
 engine = create_engine(f"sqlite:///{_DB_PATH}", future=True)
 SessionLocal = sessionmaker(bind=engine, future=True, expire_on_commit=False)
+
+
+def get_engine() -> Engine:
+    """Return the application's SQLAlchemy engine."""
+    return engine
 
 
 def init_db(drop: bool = False):
