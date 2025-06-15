@@ -34,8 +34,9 @@ from dialogs import (
     FormulaDialog,
     RevisionDiffDialog,
 )
-from auth import login, current_user, require_role, Role
-from models import RawMaterial, Formula
+from auth import login
+from session import current_user, require_role
+from models import RawMaterial, Formula, Role
 
 
 # ---------------------------------------------------------------------------#
