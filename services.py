@@ -186,14 +186,15 @@ def import_materials_csv(path: Path) -> dict:
             if s.query(RawMaterial).filter_by(name=row["name"]).first():
                 skipped += 1
                 continue
+            level_str = row.get("fragrance_pyramid_level")
+            level = PyramidLevel(level_str) if level_str else PyramidLevel.MIDDLE
             s.add(
                 RawMaterial(
                     name=row["name"],
                     category=row.get("category") or "",
                     cost_per_g=float(row.get("cost_per_g") or 0),
                     inventory_g=float(row.get("inventory_g") or 0),
-                    fragrance_pyramid_level=row.get("fragrance_pyramid_level")
-                    or PyramidLevel.MIDDLE,
+                    fragrance_pyramid_level=level,
                 )
             )
             added += 1
