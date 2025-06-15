@@ -20,7 +20,7 @@ from models import (
     PyramidLevel,
     AuditLog,
 )
-from auth import current_user, Role
+from session import current_user
 
 # ---------------------------------------------------------------------------#
 # Session helper
