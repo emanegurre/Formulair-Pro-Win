@@ -6,13 +6,13 @@ from sqlalchemy import create_engine
 from sqlalchemy.engine import URL
 from sqlalchemy_utils import database_exists, create_database
 
-from models import Base, get_engine
+from models import Base, engine
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--pg-url", default=os.getenv("PGURL"), required=True)
 args = parser.parse_args()
 
-local_engine = get_engine()
+local_engine = engine
 pg_engine = create_engine(URL.create(args.pg_url), future=True)
 
 if not database_exists(pg_engine.url):
