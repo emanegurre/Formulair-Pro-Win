@@ -1,0 +1,15 @@
+﻿# Entorno virtual
+.venv/
+# Bases de datos locales
+*.db
+# Compilados PyInstaller / MSIX
+dist/
+build/
+*.exe
+*.msix
+# Archivos temporales
+__pycache__/
+*.pyc
+# Config IDE (VS Code, PyCharm…)
+.vscode/
+.idea/

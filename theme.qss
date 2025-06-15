@@ -1,0 +1,4 @@
+/* theme.qss – estilo claro minimal */
+QToolBar { background: #f0f0f0; spacing: 6px; }
+QTableView { gridline-color: #d0d0d0; }
+QHeaderView::section { background: #e0e0e0; padding: 4px; }
